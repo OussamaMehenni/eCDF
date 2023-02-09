@@ -82,11 +82,11 @@ page 50900 "Luxembourg Setup Card"
                     trigger OnAssistEdit()
                     var
                         EKLU01: Text[250];
+                        FileManagement: Codeunit "File Management";
                     begin
-                        //  "eCDF - XSD File" := FileManagement.OpenFileDialog(EKLU01, '','');
+                        EKLU01 := 'Nom du fichier ';
+                        //"eCDF - XSD File" := FileManagement.UploadFile(EKLU01, '');
                     end;
-
-
                 }
 
                 field("eCDF - XML Version"; Rec."eCDF - XML Version")
@@ -153,5 +153,18 @@ page 50900 "Luxembourg Setup Card"
             }
         }
     }
+
+    trigger OnOpenPage()
+    VAR
+        MyInt: Integer;
+    begin
+
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+    begin
+
+    end;
 
 }
