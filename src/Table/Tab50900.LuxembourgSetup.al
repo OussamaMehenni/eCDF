@@ -73,12 +73,14 @@ table 50900 "Luxembourg Setup"
             CaptionML = ENU = 'Diplomat : Origin VAT Bus. Posting Group',
                         FRB = 'Diplomate : Groupe compta. marché TVA d''origine';
             DataClassification = CustomerContent;
+            TableRelation = "VAT Business Posting Group";
         }
         field(901; "Diplo. VAT Bus. Posting Exo"; Code[20])
         {
             CaptionML = ENU = 'Diplomat : VAT Bus. Posting Group exoneration',
                         FRB = 'Diplomate : Groupe compta. marché TVA exonération';
             DataClassification = CustomerContent;
+            TableRelation = "VAT Business Posting Group";
         }
         field(902; "Diplo. Threshold Amount"; Decimal)
         {

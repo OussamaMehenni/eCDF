@@ -1,3 +1,6 @@
+/// <summary>
+/// Page Luxembourg Setup Card (ID 50900).
+/// </summary>
 page 50900 "Luxembourg Setup Card"
 {
     Caption = 'Luxembourg Setup Card';
@@ -15,13 +18,6 @@ page 50900 "Luxembourg Setup Card"
             {
                 CaptionML = ENU = 'General',
                             FRB = 'Général';
-                field("Primary Key"; Rec."Primary Key")
-                {
-                    ApplicationArea = All;
-                    //Caption = 'Primary Key';
-                    Tooltip = 'Specifies the Primary Key.';
-                }
-
                 field("Luxembourg Legislation"; Rec."Luxembourg Legislation")
                 {
                     ApplicationArea = All;
@@ -83,6 +79,14 @@ page 50900 "Luxembourg Setup Card"
                     ApplicationArea = All;
                     //Caption = 'eCDF - XSD File';
                     Tooltip = 'Specifies the eCDF - XSD File.';
+                    trigger OnAssistEdit()
+                    var
+                        EKLU01: Text[250];
+                    begin
+                        //  "eCDF - XSD File" := FileManagement.OpenFileDialog(EKLU01, '','');
+                    end;
+
+
                 }
 
                 field("eCDF - XML Version"; Rec."eCDF - XML Version")
