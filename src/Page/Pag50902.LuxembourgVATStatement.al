@@ -32,7 +32,8 @@ page 50902 "Luxembourg VAT Data Card"
                     Caption = 'Statement Name';
                     Tooltip = 'Specifies the VAT Statement Name.';
                     Lookup = true;
-                    //ApplicationAre = #Basic,#Suite
+                    //UsageCategory = ReportsAndAnalysis;
+                    //ApplicationArea = Basic, Suite;
                 }
             }
 
@@ -213,44 +214,34 @@ page 50902 "Luxembourg VAT Data Card"
                         CASE VATStatementLine.Type OF
                             VATStatementLine.Type::"Account Totaling":
                                 BEGIN
-                                    GLEntry.SETCURRENTKEY("Journal Template Name", "G/L Account No.", "Posting Date", "Document Type");
+                                    GLEntry.SETCURRENTKEY("Journal Templ. Name", "G/L Account No.", "Posting Date", "Document Type");
                                     GLEntry.SETFILTER("G/L Account No.", VATStatementLine."Account Totaling");
-                                    //COPYFILTER(VATStatementLine."Date Filter",GLEntry."Posting Date");
                                     GLEntry.SETRANGE("Posting Date", Rec."Starting Date", Rec."Ending Date");
                                     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
                                         GLEntry.SETFILTER("Document Type", '<>%1', VATStatementLine."Document Type"::"Credit Memo")
                                     ELSE
                                         GLEntry.SETRANGE("Document Type", VATStatementLine."Document Type");
-                                    //EK-LU-1
+
                                     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
                                         GLEntry.SETRANGE("Document Type");
-                                    //EK-LU-1
+
                                     PAGE.RUN(PAGE::"General Ledger Entries", GLEntry);
                                 END;
                             VATStatementLine.Type::"VAT Entry Totaling":
                                 BEGIN
                                     VATEntry.RESET;
-                                    VATEntry.SETCURRENTKEY("Journal Template Name", Type, Closed, "VAT Bus. Posting Group", "VAT Prod. Posting Group", "Document Type", "Posting Date");
+                                    VATEntry.SETCURRENTKEY("Journal Templ. Name", Type, Closed, "VAT Bus. Posting Group", "VAT Prod. Posting Group", "Document Type", "Posting Date");
                                     VATEntry.SETRANGE(Type, VATStatementLine."Gen. Posting Type");
-                                    //EK-LU-1 VATEntry.SETRANGE("VAT Bus. Posting Group","VAT Bus. Posting Group");
-                                    //EK-LU-1 VATEntry.SETRANGE("VAT Prod. Posting Group","VAT Prod. Posting Group");
-                                    VATEntry.SETFILTER("VAT Bus. Posting Group", VATStatementLine."VAT Bus. Posting Group");//EK-LU-1 
-                                    VATEntry.SETFILTER("VAT Prod. Posting Group", VATStatementLine."VAT Prod. Posting Group");//EK-LU-1 
+                                    VATEntry.SETFILTER("VAT Bus. Posting Group", VATStatementLine."VAT Bus. Posting Group");
+                                    VATEntry.SETFILTER("VAT Prod. Posting Group", VATStatementLine."VAT Prod. Posting Group");
                                     VATEntry.SETRANGE("Tax Jurisdiction Code", VATStatementLine."Tax Jurisdiction Code");
                                     VATEntry.SETRANGE("Use Tax", VATStatementLine."Use Tax");
                                     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
                                         VATEntry.SETFILTER("Document Type", '<>%1', VATStatementLine."Document Type"::"Credit Memo")
                                     ELSE
                                         VATEntry.SETRANGE("Document Type", VATStatementLine."Document Type");
-                                    //EK-LU-1
                                     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
                                         VATEntry.SETRANGE("Document Type");
-                                    //EK-LU-1
-                                    // {IF GETFILTER("Date Filter") <> '' THEN
-                                    //         IF PeriodSelection = PeriodSelection::"Before and Within Period" THEN
-                                    //             VATEntry.SETRANGE("Posting Date", 0D, GETRANGEMAX("Date Filter"))
-                                    //         ELSE
-                                    //             COPYFILTER("Date Filter", VATEntry."Posting Date");}
                                     VATEntry.SETRANGE("Posting Date", Rec."Starting Date", Rec."Ending Date");
                                     CASE Selection OF
                                         Selection::Open:
@@ -447,49 +438,6 @@ page 50902 "Luxembourg VAT Data Card"
                     Editable = false;
                     Visible = false;
                 }
-
-                // field("Sender"; Rec."Sender") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Sender';
-                //     Tooltip = 'Specifies the Sender.';
-                // }
-
-                // field("Time Stamp Send"; "Time Stamp Send") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Time Stamp Send';
-                //     Tooltip = 'Specifies the Time Stamp Send.';
-                // }
-
-                // field("Filename"; "Filename") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Filename';
-                //     Tooltip = 'Specifies the Filename.';
-                // }
-
-                // field("Balance Type"; "Balance Type") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Balance Type';
-                //     Tooltip = 'Specifies the Balance Type.';
-                // }
-
-                // field("Calc Total Deb. Balance Sheet"; "Calc Total Deb. Balance Sheet") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Calc Total Deb. Balance Sheet';
-                //     Tooltip = 'Specifies the Calc Total Deb. Balance Sheet.';
-                // }
-
-                // field("Calc Total Cre. Balance Sheet"; "Calc Total Cre. Balance Sheet") 
-                // {
-                //     ApplicationArea = All;
-                //     //Caption = 'Calc Total Cre. Balance Sheet';
-                //     Tooltip = 'Specifies the Calc Total Cre. Balance Sheet.';
-                // }
-
             }
         }
 
