@@ -189,70 +189,83 @@ page 50902 "Luxembourg VAT Data Card"
                     Editable = false;
                     DrillDown = true;
                     trigger OnDrillDown()
-                    begin
-                        // CLEAR(VATStatementLine);
-                        // VATStatementLine.SETRANGE("Statement Template Name", Rec."Statement Template Name");
-                        // VATStatementLine.SETRANGE("Statement Name", Rec."Statement Name");
-                        // VATStatementLine.SETRANGE("Line No.", Rec."Line No.");
-                        // VATStatementLine.FINDSET(FALSE, FALSE);
+                    var
+                        VATStatementLine: Record "VAT Statement Line";
+                        GLEntry: Record "G/L Entry";
+                        VATEntry: Record "VAT Entry";
+                        VATStmtName: Record "VAT Statement Name";
+                        VATStatement: Report "VAT Statement";
+                        ColumnValue: Decimal;
+                        Selection: Option Open,Closed,"Open and Closed";
+                        PeriodSelection: Option "Before and Within Period","Within Period";
+                        UseAmtsInAddCurr: Boolean;
+                        CorrectionValue: Decimal;
+                        NetAmountLCY: Decimal;
+                        LText50900: TextConst ENU = 'Drilldown is not possible when %1 is %2.';
 
-                        // CASE VATStatementLine.Type OF
-                        // VATStatementLine.Type::"Account Totaling":
-                        //     BEGIN
-                        //     GLEntry.SETCURRENTKEY("Journal Template Name","G/L Account No.","Posting Date","Document Type");
-                        //     GLEntry.SETFILTER("G/L Account No.", VATStatementLine."Account Totaling");
-                        //     //COPYFILTER(VATStatementLine."Date Filter",GLEntry."Posting Date");
-                        //     GLEntry.SETRANGE("Posting Date",Rec."Starting Date",Rec."Ending Date");
-                        //     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
-                        //         GLEntry.SETFILTER("Document Type",'<>%1',VATStatementLine."Document Type"::"Credit Memo")
-                        //     ELSE
-                        //         GLEntry.SETRANGE("Document Type",VATStatementLine."Document Type");
-                        //     //EK-LU-1
-                        //     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
-                        //         GLEntry.SETRANGE("Document Type");
-                        //     //EK-LU-1
-                        //     PAGE.RUN(PAGE::"General Ledger Entries",GLEntry);
-                        //     END;
-                        // VATStatementLine.Type::"VAT Entry Totaling":
-                        //     BEGIN
-                        //     VATEntry.RESET;
-                        //     VATEntry.SETCURRENTKEY(
-                        //         "Journal Template Name",Type,Closed,"VAT Bus. Posting Group","VAT Prod. Posting Group","Document Type","Posting Date");
-                        //     VATEntry.SETRANGE(Type,VATStatementLine."Gen. Posting Type");
-                        //     //EK-LU-1 VATEntry.SETRANGE("VAT Bus. Posting Group","VAT Bus. Posting Group");
-                        //     //EK-LU-1 VATEntry.SETRANGE("VAT Prod. Posting Group","VAT Prod. Posting Group");
-                        //     VATEntry.SETFILTER("VAT Bus. Posting Group",VATStatementLine."VAT Bus. Posting Group");//EK-LU-1 
-                        //     VATEntry.SETFILTER("VAT Prod. Posting Group",VATStatementLine."VAT Prod. Posting Group");//EK-LU-1 
-                        //     VATEntry.SETRANGE("Tax Jurisdiction Code",VATStatementLine."Tax Jurisdiction Code");
-                        //     VATEntry.SETRANGE("Use Tax",VATStatementLine."Use Tax");
-                        //     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
-                        //         VATEntry.SETFILTER("Document Type",'<>%1',VATStatementLine."Document Type"::"Credit Memo")
-                        //     ELSE
-                        //         VATEntry.SETRANGE("Document Type",VATStatementLine."Document Type");
-                        //     //EK-LU-1
-                        //     IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
-                        //         VATEntry.SETRANGE("Document Type");
-                        //     //EK-LU-1
-                        //     {IF GETFILTER("Date Filter") <> '' THEN
-                        //         IF PeriodSelection = PeriodSelection::"Before and Within Period" THEN
-                        //         VATEntry.SETRANGE("Posting Date",0D,GETRANGEMAX("Date Filter"))
-                        //         ELSE
-                        //         COPYFILTER("Date Filter",VATEntry."Posting Date");}
-                        //     VATEntry.SETRANGE("Posting Date",Rec."Starting Date",Rec."Ending Date");
-                        //     CASE Selection OF
-                        //         Selection::Open:
-                        //         VATEntry.SETRANGE(Closed,FALSE);
-                        //         Selection::Closed:
-                        //         VATEntry.SETRANGE(Closed,TRUE);
-                        //         Selection::"Open and Closed":
-                        //         VATEntry.SETRANGE(Closed);
-                        //     END;
-                        //     PAGE.RUN(PAGE::"VAT Entries",VATEntry);
-                        //     END;
-                        // VATStatementLine.Type::"Row Totaling",
-                        // VATStatementLine.Type::Description:
-                        //     ERROR(Text000,'Type',VATStatementLine.Type);
-                        // END;
+                    begin
+                        Clear(VATStatementLine);
+                        VATStatementLine.SETRANGE("Statement Template Name", Rec."Statement Template Name");
+                        VATStatementLine.SETRANGE("Statement Name", Rec."Statement Name");
+                        VATStatementLine.SETRANGE("Line No.", Rec."Line No.");
+                        VATStatementLine.FINDSET(FALSE, FALSE);
+
+                        CASE VATStatementLine.Type OF
+                            VATStatementLine.Type::"Account Totaling":
+                                BEGIN
+                                    GLEntry.SETCURRENTKEY("Journal Template Name", "G/L Account No.", "Posting Date", "Document Type");
+                                    GLEntry.SETFILTER("G/L Account No.", VATStatementLine."Account Totaling");
+                                    //COPYFILTER(VATStatementLine."Date Filter",GLEntry."Posting Date");
+                                    GLEntry.SETRANGE("Posting Date", Rec."Starting Date", Rec."Ending Date");
+                                    IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
+                                        GLEntry.SETFILTER("Document Type", '<>%1', VATStatementLine."Document Type"::"Credit Memo")
+                                    ELSE
+                                        GLEntry.SETRANGE("Document Type", VATStatementLine."Document Type");
+                                    //EK-LU-1
+                                    IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
+                                        GLEntry.SETRANGE("Document Type");
+                                    //EK-LU-1
+                                    PAGE.RUN(PAGE::"General Ledger Entries", GLEntry);
+                                END;
+                            VATStatementLine.Type::"VAT Entry Totaling":
+                                BEGIN
+                                    VATEntry.RESET;
+                                    VATEntry.SETCURRENTKEY("Journal Template Name", Type, Closed, "VAT Bus. Posting Group", "VAT Prod. Posting Group", "Document Type", "Posting Date");
+                                    VATEntry.SETRANGE(Type, VATStatementLine."Gen. Posting Type");
+                                    //EK-LU-1 VATEntry.SETRANGE("VAT Bus. Posting Group","VAT Bus. Posting Group");
+                                    //EK-LU-1 VATEntry.SETRANGE("VAT Prod. Posting Group","VAT Prod. Posting Group");
+                                    VATEntry.SETFILTER("VAT Bus. Posting Group", VATStatementLine."VAT Bus. Posting Group");//EK-LU-1 
+                                    VATEntry.SETFILTER("VAT Prod. Posting Group", VATStatementLine."VAT Prod. Posting Group");//EK-LU-1 
+                                    VATEntry.SETRANGE("Tax Jurisdiction Code", VATStatementLine."Tax Jurisdiction Code");
+                                    VATEntry.SETRANGE("Use Tax", VATStatementLine."Use Tax");
+                                    IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::"All except Credit Memo" THEN
+                                        VATEntry.SETFILTER("Document Type", '<>%1', VATStatementLine."Document Type"::"Credit Memo")
+                                    ELSE
+                                        VATEntry.SETRANGE("Document Type", VATStatementLine."Document Type");
+                                    //EK-LU-1
+                                    IF VATStatementLine."Document Type" = VATStatementLine."Document Type"::" " THEN
+                                        VATEntry.SETRANGE("Document Type");
+                                    //EK-LU-1
+                                    // {IF GETFILTER("Date Filter") <> '' THEN
+                                    //         IF PeriodSelection = PeriodSelection::"Before and Within Period" THEN
+                                    //             VATEntry.SETRANGE("Posting Date", 0D, GETRANGEMAX("Date Filter"))
+                                    //         ELSE
+                                    //             COPYFILTER("Date Filter", VATEntry."Posting Date");}
+                                    VATEntry.SETRANGE("Posting Date", Rec."Starting Date", Rec."Ending Date");
+                                    CASE Selection OF
+                                        Selection::Open:
+                                            VATEntry.SETRANGE(Closed, FALSE);
+                                        Selection::Closed:
+                                            VATEntry.SETRANGE(Closed, TRUE);
+                                        Selection::"Open and Closed":
+                                            VATEntry.SETRANGE(Closed);
+                                    END;
+                                    PAGE.RUN(PAGE::"VAT Entries", VATEntry);
+                                END;
+                            VATStatementLine.Type::"Row Totaling",
+                            VATStatementLine.Type::Description:
+                                ERROR(LText50900, 'Type', VATStatementLine.Type);
+                        END;
 
                     end;
                 }
@@ -518,18 +531,17 @@ page 50902 "Luxembourg VAT Data Card"
         EVALUATE(CurrentStmtVersion, Rec.GETFILTER(Version));
         //Setting Header >>
         CurrentDeclarationType := CurrentDeclarationType::VAT;
-        //?????
         Rec.SETRANGE("Declaration Type", CurrentDeclarationType);
-        //?????
     end;
 
     trigger OnAfterGetRecord()
     begin
 
-        // IF "Data Type" = "Data Type"::A THEN
-        //     FinalValueEDITABLE := TRUE
-        // ELSE
-        //     FinalValueEDITABLE := FALSE;
+
+        if rec."Data Type" = rec."Data Type"::A then
+            FinalValueEDITABLE := true
+        else
+            FinalValueEDITABLE := false;
 
     end;
 }
