@@ -112,9 +112,10 @@ table 50901 "Luxembourg VAT Rules"
     }
     keys
     {
-        key(PK; "Statement Template Name")
+        key(PK; "Statement Template Name", "Statement Name", "Row No.", "Rule Number")
         {
             Clustered = true;
+
         }
     }
 }
