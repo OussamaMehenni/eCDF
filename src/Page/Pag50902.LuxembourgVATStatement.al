@@ -1,9 +1,9 @@
 /// <summary>
 /// Page Luxembourg VAT Data Card (ID 50).
 /// </summary>
-page 50902 "Luxembourg VAT Data Card"
+page 50902 "Luxembourg VAT Statement"
 {
-    Caption = 'Luxembourg VAT Data Card';
+    Caption = 'Luxembourg VAT Statement';
     PageType = WorkSheet;
     SourceTable = "Luxembourg VAT Data";
     UsageCategory = Documents;
@@ -11,9 +11,11 @@ page 50902 "Luxembourg VAT Data Card"
 
     layout
     {
+
         area(content)
         {
-            group(Control1)
+
+            group(Statement)
             {
 
                 field(CurrentStmtTemplateName; CurrentStmtTemplateName)
@@ -28,16 +30,15 @@ page 50902 "Luxembourg VAT Data Card"
 
                 field(CurrentStmtName; CurrentStmtName)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Statement Name';
                     Tooltip = 'Specifies the VAT Statement Name.';
                     Lookup = true;
-                    //UsageCategory = ReportsAndAnalysis;
-                    //ApplicationArea = Basic, Suite;
+
                 }
             }
 
-            group(Control2)
+            group(Date)
             {
 
                 field(CurrentStartingDate; CurrentStartingDate)
@@ -55,7 +56,7 @@ page 50902 "Luxembourg VAT Data Card"
                 }
             }
 
-            group(Control3)
+            group(Versioning)
             {
 
                 field(CurrentStmtVersion; CurrentStmtVersion)
@@ -71,11 +72,26 @@ page 50902 "Luxembourg VAT Data Card"
                     ApplicationArea = All;
                     Caption = 'Declaration Type';
                     Tooltip = 'Specifies the Declaration Type.';
+                    trigger OnValidate()
+                    var
+                    begin
+                        Rec.SETFILTER("Declaration Type", '%1', CurrentDeclarationType);
+                        IsIntracommMode := false;
+
+                        //Display/hide correction button
+                        IsCorrectionsENABLE := false;
+                        if ((CurrentDeclarationType = Rec."Declaration Type"::INTRAG) or
+                                (CurrentDeclarationType = Rec."Declaration Type"::INTRAS)) then begin
+                            IsCorrectionsENABLE := true;
+                            IsIntracommMode := true;
+                        end;
+                        CurrPage.UPDATE;
+                    end;
                 }
 
             }
 
-            group(Control4)
+            group(Data)
             {
                 field("Status Header"; Rec."Status Header")
                 {
@@ -266,6 +282,10 @@ page 50902 "Luxembourg VAT Data Card"
                     ApplicationArea = All;
                     Caption = 'Correction Amount';
                     Tooltip = 'Specifies the Correction Amount.';
+                    trigger OnValidate()
+                    begin
+                        CurrPage.UPDATE;
+                    end;
                 }
 
                 field("Final Value"; Rec."Final Value")
@@ -453,9 +473,7 @@ page 50902 "Luxembourg VAT Data Card"
                 Caption = 'Notes';
             }
         }
-
     }
-
     var
         CurrentStmtTemplateName: Code[20];
         CurrentStmtName: Code[10];
@@ -472,6 +490,7 @@ page 50902 "Luxembourg VAT Data Card"
     trigger OnOpenPage()
     begin
         //Setting Header <<
+        CurrentStmtVersion := 1;
         CurrentStmtTemplateName := Rec.GETFILTER("Statement Template Name");
         CurrentStmtName := Rec.GETFILTER("Statement Name");
         EVALUATE(CurrentStartingDate, Rec.GETFILTER("Starting Date"));
@@ -484,12 +503,15 @@ page 50902 "Luxembourg VAT Data Card"
 
     trigger OnAfterGetRecord()
     begin
-
-
         if rec."Data Type" = rec."Data Type"::A then
             FinalValueEDITABLE := true
         else
             FinalValueEDITABLE := false;
+    end;
 
+    trigger OnModifyRecord(): Boolean
+    begin
+        Rec.VALIDATE(Status, Rec.Status::B);
+        Rec.CALCFIELDS("Status Header");
     end;
 }
