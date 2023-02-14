@@ -1,7 +1,7 @@
 /// <summary>
 /// Page Luxembourg VAT Data Card (ID 50).
 /// </summary>
-page 50902 "Luxembourg VAT Statement"
+page 50901 "Luxembourg VAT Statement"
 {
     Caption = 'Luxembourg VAT Statement';
     PageType = WorkSheet;

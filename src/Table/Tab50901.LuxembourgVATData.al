@@ -1,4 +1,4 @@
-table 50902 "Luxembourg VAT Data"
+table 50901 "Luxembourg VAT Data"
 {
     Caption = 'Luxembourg VAT Data';
     DataClassification = ToBeClassified;

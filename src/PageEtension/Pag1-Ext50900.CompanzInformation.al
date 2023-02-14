@@ -1,23 +1,19 @@
+#pragma warning disable DOC0101
 /// <summary>
-/// Page Luxembourg Setup Card (ID 50900).
+/// PageExtension Luxembourg Setup (ID 50900) extends Record Company Information.
 /// </summary>
-page 50900 "Luxembourg Setup Card"
+pageextension 50900 "Luxembourg Setup" extends "Company Information"
+#pragma warning restore DOC0101
 {
-    Caption = 'Luxembourg Setup Card';
-    PageType = Card;
-    SourceTable = "Luxembourg Setup";
-    UsageCategory = Documents;
-    ApplicationArea = All;
-
+    Caption = 'Luxembourg Setup';
     layout
     {
-
-        area(content)
+        addafter("User Experience")
         {
-            group(General)
+            group(Luxembourg)
             {
-                CaptionML = ENU = 'General',
-                            FRB = 'Général';
+                CaptionML = ENU = 'Luxembourg',
+                            FRB = 'Luxembourg';
                 field("Luxembourg Legislation"; Rec."Luxembourg Legislation")
                 {
                     ApplicationArea = All;
@@ -151,20 +147,8 @@ page 50900 "Luxembourg Setup Card"
                     Tooltip = 'Specifies the DVATNbr.';
                 }
             }
+
+
         }
     }
-
-    trigger OnOpenPage()
-    VAR
-        MyInt: Integer;
-    begin
-
-    end;
-
-    trigger OnAfterGetRecord()
-    var
-    begin
-
-    end;
-
 }

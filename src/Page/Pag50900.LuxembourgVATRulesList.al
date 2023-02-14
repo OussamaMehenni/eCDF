@@ -1,7 +1,7 @@
 /// <summary>
 /// Page id.
 /// </summary>
-page 50901 "Luxembourg VAT Rules"
+page 50900 "Luxembourg VAT Rules"
 {
     Caption = 'Luxembourg VAT Rules';
     PageType = List;

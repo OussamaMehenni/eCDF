@@ -1,7 +1,7 @@
 /// <summary>
 /// Page Luxembourg VAT Data List (ID 50903).
 /// </summary>
-page 50903 "Luxembourg VAT Statement List"
+page 50902 "Luxembourg VAT Statement List"
 {
     Caption = 'Luxembourg VAT Data List';
     PageType = List;

@@ -1,7 +1,7 @@
 /// <summary>
 /// Table Luxembourg VAT Rules (ID 50901).
 /// </summary>
-table 50901 "Luxembourg VAT Rules"
+table 50900 "Luxembourg VAT Rules"
 {
     Caption = 'Luxembourg VAT Rules';
     DataClassification = ToBeClassified;
