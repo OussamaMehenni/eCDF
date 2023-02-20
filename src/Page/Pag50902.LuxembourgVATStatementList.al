@@ -1,11 +1,11 @@
 /// <summary>
-/// Page Luxembourg VAT Data List (ID 50903).
+/// Page eCDF Data List (ID 50903).
 /// </summary>
-page 50902 "Luxembourg VAT Statement List"
+page 50902 "eCDF Statement List"
 {
-    Caption = 'Luxembourg VAT Data List';
+    Caption = 'eCDF Data List';
     PageType = List;
-    SourceTable = "Luxembourg VAT Data";
+    SourceTable = "eCDF Data";
     UsageCategory = Lists;
     ApplicationArea = All;
 
@@ -65,8 +65,8 @@ page 50902 "Luxembourg VAT Statement List"
 
     local procedure LoadData()
     var
-        lLuxVATData: Record "Luxembourg VAT Data";
-        lLuxVATDataToDisplay: Record "Luxembourg VAT Data";
+        lLuxVATData: Record "eCDF Data";
+        lLuxVATDataToDisplay: Record "eCDF Data";
         i: Integer;
 
     begin

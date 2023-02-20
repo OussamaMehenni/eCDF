@@ -1,11 +1,11 @@
 /// <summary>
-/// Page Luxembourg VAT Data Card (ID 50).
+/// Page eCDF Data Card (ID 50).
 /// </summary>
-page 50901 "Luxembourg VAT Statement"
+page 50901 "eCDF Statement"
 {
-    Caption = 'Luxembourg VAT Statement';
+    Caption = 'eCDF Statement';
     PageType = WorkSheet;
-    SourceTable = "Luxembourg VAT Data";
+    SourceTable = "eCDF Data";
     UsageCategory = Documents;
     ApplicationArea = All;
 
@@ -218,7 +218,7 @@ page 50901 "Luxembourg VAT Statement"
                         UseAmtsInAddCurr: Boolean;
                         CorrectionValue: Decimal;
                         NetAmountLCY: Decimal;
-                        LText50900: TextConst ENU = 'Drilldown is not possible when %1 is %2.';
+                        Text50900: Label 'Drilldown is not possible when %1 is %2.';
 
                     begin
                         Clear(VATStatementLine);
@@ -271,7 +271,7 @@ page 50901 "Luxembourg VAT Statement"
                                 END;
                             VATStatementLine.Type::"Row Totaling",
                             VATStatementLine.Type::Description:
-                                ERROR(LText50900, 'Type', VATStatementLine.Type);
+                                ERROR(Text50900, 'Type', VATStatementLine.Type);
                         END;
 
                     end;
@@ -474,6 +474,7 @@ page 50901 "Luxembourg VAT Statement"
             }
         }
     }
+
     var
         CurrentStmtTemplateName: Code[20];
         CurrentStmtName: Code[10];
@@ -482,15 +483,16 @@ page 50901 "Luxembourg VAT Statement"
         CurrentEndingDate: Date;
         CurrentDeclarationType: Option VAT,INTRAG,INTRAS,INTRAT;
         IsCorrectionsENABLE: Boolean;
+        [InDataSet]
         IsCorrectionAmountEditable: Boolean;
         FinalValueEDITABLE: Boolean;
+        [InDataSet]
         IsIntracommMode: Boolean;
-        TextStatus: TextConst ENU = 'Invalid Status : %1';
+        TextStatus: label 'Invalid Status : %1';
 
     trigger OnOpenPage()
     begin
         //Setting Header <<
-        CurrentStmtVersion := 1;
         CurrentStmtTemplateName := Rec.GETFILTER("Statement Template Name");
         CurrentStmtName := Rec.GETFILTER("Statement Name");
         EVALUATE(CurrentStartingDate, Rec.GETFILTER("Starting Date"));
@@ -503,7 +505,7 @@ page 50901 "Luxembourg VAT Statement"
 
     trigger OnAfterGetRecord()
     begin
-        if rec."Data Type" = rec."Data Type"::A then
+        if rec."Data Type" = rec."Data Type"::Alphanumeric then
             FinalValueEDITABLE := true
         else
             FinalValueEDITABLE := false;

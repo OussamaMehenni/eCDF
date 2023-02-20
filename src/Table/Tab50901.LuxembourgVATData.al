@@ -1,6 +1,9 @@
-table 50901 "Luxembourg VAT Data"
+/// <summary>
+/// Table eCDF Data (ID 50901).
+/// </summary>
+table 50901 "eCDF Data"
 {
-    Caption = 'Luxembourg VAT Data';
+    Caption = 'eCDF Data';
     DataClassification = ToBeClassified;
 
     fields
@@ -88,7 +91,19 @@ table 50901 "Luxembourg VAT Data"
         field(23; "Account Totaling"; Text[30])
         {
             Caption = 'Account Totaling';
+            TableRelation = "G/L Account";
+            ValidateTableRelation = false;
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            begin
+                if "Account Totaling" <> '' then begin
+                    GLAcc.SETFILTER("No.", "Account Totaling");
+                    GLAcc.SETFILTER("Account Type", '<> 0');
+                    if GLAcc.FINDFIRST then
+                        GLAcc.TESTFIELD("Account Type", GLAcc."Account Type"::Posting);
+                end;
+            end;
         }
         field(50; Description; Text[50])
         {
@@ -104,11 +119,26 @@ table 50901 "Luxembourg VAT Data"
         {
             Caption = 'Calculated Value';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            begin
+                "Final Value" := FORMAT("Calculated Value" + "Correction Amount")
+            end;
         }
         field(101; "Correction Amount"; Decimal)
         {
             Caption = 'Correction Amount';
             DataClassification = CustomerContent;
+            trigger OnValidate()
+            var
+                Text50000: label 'Unable to modify a line with the following status: %1';
+            begin
+                if ((Rec."Correction Amount" <> xRec."Correction Amount") and (Status = Status::Sent)) then begin
+                    MESSAGE(Text50000, Status);
+                    Rec."Correction Amount" := xRec."Correction Amount";
+                end else begin
+                    "Final Value" := FORMAT("Calculated Value" + "Correction Amount");
+                end;
+            end;
         }
         field(102; "Final Value"; Text[250])
         {
@@ -133,7 +163,7 @@ table 50901 "Luxembourg VAT Data"
             OptionMembers = Working,Error,Validated;
             OptionCaption = 'Working,Error,Validated';
             FieldClass = FlowField;
-            CalcFormula = Min("Luxembourg VAT Data".Status
+            CalcFormula = Min("eCDF Data".Status
                           WHERE("Statement Template Name" = FIELD("Statement Template Name"),
                                     "Statement Name" = FIELD("Statement Name"),
                                     "Starting Date" = FIELD("Starting Date"),
@@ -158,7 +188,7 @@ table 50901 "Luxembourg VAT Data"
         field(400; "Data Type"; Option)
         {
             Caption = 'Data Type';
-            OptionMembers = ,N,I,B,A,P;
+            OptionMembers = Numeric,Integer,Boolean,Alphanumeric,Percent;
             OptionCaption = ' ,Numeric,Integer,Boolean,Alphanumeric,Percent';
             DataClassification = CustomerContent;
         }
@@ -185,6 +215,13 @@ table 50901 "Luxembourg VAT Data"
         {
             Caption = 'IntraComm VAT Registration No.';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                VATRegistrationNoFormat: Record "VAT Registration No. Format";
+            begin
+                //VATRegistrationNoFormat.Test("IntraComm VAT Registration No.",'LU',20,381);
+            end;
         }
         field(702; "IntraComm Customer No."; Code[20])
         {
@@ -259,4 +296,105 @@ table 50901 "Luxembourg VAT Data"
 
         }
     }
+
+    var
+        GLAcc: Record "G/L Account";
+
+    /// <summary>
+    /// LookupName.
+    /// </summary>
+    /// <param name="CurrentStmtTemplateName">Code[10].</param>
+    /// <param name="CurrentStmtName">Code[10].</param>
+    /// <param name="EntrdStmtName">VAR Text[10].</param>
+    /// <returns>Return value of type Boolean.</returns>
+    [Scope('OnPrem')]
+    procedure LookupName(CurrentStmtTemplateName: Code[10]; CurrentStmtName: Code[10]; var EntrdStmtName: Text[10]): Boolean
+    var
+        VATStmtName: Record 257;
+    begin
+        VATStmtName."Statement Template Name" := CurrentStmtTemplateName;
+        VATStmtName.Name := CurrentStmtName;
+        VATStmtName.FILTERGROUP(2);
+        VATStmtName.SETRANGE("Statement Template Name", CurrentStmtTemplateName);
+        VATStmtName.FILTERGROUP(0);
+        IF PAGE.RUNMODAL(0, VATStmtName) <> ACTION::LookupOK THEN
+            EXIT(FALSE);
+
+        EntrdStmtName := VATStmtName.Name;
+        EXIT(TRUE);
+    end;
+
+    /// <summary>
+    /// LookupTemplateName.
+    /// </summary>
+    /// <param name="CurrentStmtTemplateName">Code[10].</param>
+    /// <param name="CurrentStmtName">Code[10].</param>
+    /// <param name="EntrdStmtName">VAR Text[10].</param>
+    /// <returns>Return value of type Boolean.</returns>
+    [Scope('OnPrem')]
+    procedure LookupTemplateName(CurrentStmtTemplateName: Code[10]; CurrentStmtName: Code[10]; var EntrdStmtName: Text[10]): Boolean
+    var
+        VATStatementTemplate: Record 255;
+    begin
+        IF PAGE.RUNMODAL(0, VATStatementTemplate) <> ACTION::LookupOK THEN
+            EXIT(FALSE);
+
+        EntrdStmtName := VATStatementTemplate.Name;
+        EXIT(TRUE);
+    end;
+
+    /// <summary>
+    /// CheckTemplateName.
+    /// </summary>
+    /// <param name="CurrentStmtTemplateName">Code[10].</param>
+    /// <param name="CurrentStmtName">VAR Code[10].</param>
+    [Scope('OnPrem')]
+    procedure CheckTemplateName(CurrentStmtTemplateName: Code[10]; var CurrentStmtName: Code[10])
+    var
+        VATStmtTmpl: Record 255;
+        VATStmtName: Record 257;
+    begin
+        VATStmtTmpl.GET(CurrentStmtTemplateName);
+    end;
+
+    /// <summary>
+    /// CheckName.
+    /// </summary>
+    /// <param name="CurrentStmtName">Code[10].</param>
+    /// <param name="LuxembourgVATData">VAR Record 50900.</param>
+    [Scope('OnPrem')]
+    procedure CheckName(CurrentStmtName: Code[10]; var LuxembourgVATData: Record 50900)
+    var
+        VATStmtName: Record 257;
+    begin
+        VATStmtName.GET(LuxembourgVATData.GETRANGEMAX("Statement Template Name"), CurrentStmtName);
+    end;
+
+    /// <summary>
+    /// SetName.
+    /// </summary>
+    /// <param name="CurrentStmtName">Code[10].</param>
+    /// <param name="LuxembourgVATData">VAR Record 50900.</param>
+    [Scope('OnPrem')]
+    procedure SetName(CurrentStmtName: Code[10]; var LuxembourgVATData: Record 50900)
+    begin
+        //LuxembourgVATData.FILTERGROUP(2);
+        LuxembourgVATData.SETRANGE("Statement Name", CurrentStmtName);
+        //LuxembourgVATData.FILTERGROUP(0);
+        IF LuxembourgVATData.FINDLAST THEN;
+    end;
+
+    /// <summary>
+    /// SetTemplateName.
+    /// </summary>
+    /// <param name="CurrentStmtName">Code[10].</param>
+    /// <param name="LuxembourgVATData">VAR Record 50900.</param>
+    [Scope('OnPrem')]
+    procedure SetTemplateName(CurrentStmtName: Code[10]; var LuxembourgVATData: Record 50900)
+    begin
+        //LuxembourgVATData.FILTERGROUP(2);
+        LuxembourgVATData.SETRANGE("Statement Template Name", CurrentStmtName);
+        //LuxembourgVATData.FILTERGROUP(0);
+        IF LuxembourgVATData.FIND('-') THEN;
+    end;
 }
