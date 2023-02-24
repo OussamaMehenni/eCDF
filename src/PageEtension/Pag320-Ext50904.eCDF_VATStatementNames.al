@@ -1,12 +1,20 @@
-pageextension 50904 "VAT Statement Names_Ext" extends "VAT Statement Names"
+/// <summary>
+/// PageExtension VAT Statement Names_Ext (ID 50904) extends Record VAT Statement Names.
+/// </summary>
+pageextension 50904 "VAT Statement Names" extends "VAT Statement Names"
 {
-    Caption = 'VAT Statement Names_Ext';
+    //Caption = 'VAT Statement Names_Ext';
 
     layout
     {
         addlast(Control1)
         {
             field("Statement eCDF Type"; Rec."Statement eCDF Type")
+            {
+                ApplicationArea = All;
+            }
+
+            field(Periodicity; Rec.Periodicity)
             {
                 ApplicationArea = All;
             }

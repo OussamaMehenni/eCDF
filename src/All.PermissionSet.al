@@ -10,6 +10,7 @@ permissionset 50900 "All"
          page "eCDF Statement List" = X,
          report "Create eCDF Statement" = X,
          report "Check VAT Statement" = X,
+         report "Create XML File" = X,
          table "eCDF Data" = X,
          table "eCDF Rules" = X,
          tabledata "eCDF Data" = RIMD,

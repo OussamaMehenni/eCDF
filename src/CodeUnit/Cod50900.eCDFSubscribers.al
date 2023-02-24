@@ -30,7 +30,7 @@ codeunit 50900 "eCDF Subscribers"
     [EventSubscriber(ObjectType::Table, 255, 'OnBeforeDeleteEvent', '', false, false)]
     procedure Table_255_OnBeforeDeleteEvent(var Rec: Record 255; RunTrigger: Boolean)
     var
-        LuxembourgVATData: Record 50900;
+        LuxembourgVATData: Record "eCDF Data";
     begin
         Clear(LuxembourgVATData);
         LuxembourgVATData.SetRange("Statement Template Name", Rec.Name);
@@ -46,7 +46,7 @@ codeunit 50900 "eCDF Subscribers"
     [EventSubscriber(ObjectType::Table, 257, 'OnBeforeDeleteEvent', '', false, false)]
     procedure Table_257_OnBeforeDeleteEvent(var Rec: Record 257; RunTrigger: Boolean)
     var
-        LuxembourgVATData: Record 50900;
+        LuxembourgVATData: Record "eCDF Data";
     begin
         Clear(LuxembourgVATData);
         LuxembourgVATData.SetRange("Statement Template Name", Rec.Name);

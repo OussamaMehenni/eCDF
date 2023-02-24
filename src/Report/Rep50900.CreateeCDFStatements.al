@@ -59,27 +59,6 @@ report 50900 "Create eCDF Statement"
                     eCDFData.VALIDATE("Calculate with", "VAT Statement Line"."Calculate with");
                     eCDFData.VALIDATE(Description, "VAT Statement Line".Description);
                     eCDFData.VALIDATE("Calculated Value", TotalAmount);
-                    /*CASE "VAT Statement Line"."Balance Type" OF
-
-                        "VAT Statement Line"."Balance Type"::" ":
-                            eCDFData.VALIDATE("Calculated Value", TotalAmount);
-
-                        "VAT Statement Line"."Balance Type"::Credit:
-                            IF TotalAmount > 0 THEN
-                                eCDFData.VALIDATE("Calculated Value", 0)
-                            ELSE
-                                eCDFData.VALIDATE("Calculated Value", ABS(TotalAmount));  //EK-PCN: Valeur positive !
-
-                        "VAT Statement Line"."Balance Type"::Debit:
-                            IF TotalAmount <= 0 THEN
-                                eCDFData.VALIDATE("Calculated Value", 0)
-                            ELSE
-                                eCDFData.VALIDATE("Calculated Value", TotalAmount);
-
-                    END;
-                    eCDFData.VALIDATE("Balance Type", "VAT Statement Line"."Balance Type");
-                    eCDFData.VALIDATE("Calc Total Deb. Balance Sheet", "VAT Statement Line"."Calc Total Deb. Balance Sheet");
-                    eCDFData.VALIDATE("Calc Total Cre. Balance Sheet", "VAT Statement Line"."Calc Total Cre. Balance Sheet");*/
                     eCDFData.INSERT(TRUE);
                 end;
 
@@ -122,6 +101,61 @@ report 50900 "Create eCDF Statement"
                     END;
                 end;
             }
+
+            dataitem("eCDF Rules"; "eCDF Rules")
+            {
+                DataItemTableView = SORTING("Statement Template Name", "Statement Name", "Row No.", "Rule Number");
+
+                trigger OnPreDataItem()
+                begin
+                    SETRANGE("Statement Template Name", "VAT Statement Name"."Statement Template Name");
+                    SETRANGE("Statement Name", "VAT Statement Name".Name);
+                    SETRANGE("Start Date Validity", 0D, pStartingDate);
+                    SETFILTER("End Date Validity", '%1|>=%2', 0D, pStartingDate);
+                end;
+
+                trigger OnAfterGetRecord()
+                var
+                    eCDFData: Record "eCDF Data";
+                begin
+                    IF "Row No." <> '' THEN BEGIN
+                        eCDFData.SETRANGE("Statement Template Name", "VAT Statement Name"."Statement Template Name");
+                        eCDFData.SETRANGE("Statement Name", "VAT Statement Name".Name);
+                        eCDFData.SETFILTER("Row No.", "Row No.");
+                        eCDFData.SETRANGE(Version, Version);
+                        IF eCDFData.FINDSET THEN BEGIN
+                            REPEAT
+                                eCDFData."Data Type" := "eCDF Rules"."Data Type" + 1;
+                                eCDFData.MODIFY;
+                            UNTIL eCDFData.NEXT = 0;
+                        END;
+                    END;
+                end;
+            }
+
+            trigger OnPreDataItem()
+            var
+                eCDFData: Record "eCDF Data";
+            begin
+                SETRANGE("Statement Template Name", pStatementTemplate);
+                SETRANGE(Name, pStatementName);
+                FINDSET(FALSE, FALSE);
+
+                EndDate := pEndingDate;
+
+                //Search the next version <<
+                CLEAR(eCDFData);
+                eCDFData.SETRANGE("Statement Template Name", "VAT Statement Name"."Statement Template Name");
+                eCDFData.SETRANGE("Statement Name", "VAT Statement Name".Name);
+                eCDFData.SETRANGE("Starting Date", pStartingDate);
+                eCDFData.SETRANGE("Ending Date", pEndingDate);
+                IF eCDFData.FINDLAST THEN BEGIN
+                    Version := eCDFData.Version + 1;
+                END ELSE BEGIN
+                    Version := 1;
+                END;
+                //Search the next version >>
+            end;
         }
     }
     requestpage
@@ -130,8 +164,165 @@ report 50900 "Create eCDF Statement"
         {
             area(content)
             {
-                group(GroupName)
+                group("Create eCDF Statement")
                 {
+                    Caption = 'Create eCDF Statement';
+                    group(Statement)
+                    {
+                        Caption = 'Statement';
+                        field(StatementTemplate; pStatementTemplate)
+                        {
+                            Caption = 'Statement Template';
+                            ShowMandatory = true;
+                            TableRelation = "VAT Statement Template";
+
+                            trigger OnValidate()
+                            begin
+                                pStatementName := '';
+                                pStartingDate := 0D;
+                                pEndingDate := 0D;
+                            end;
+                        }
+                        field(StatementName; pStatementName)
+                        {
+                            Caption = 'Statement Name';
+                            ShowMandatory = true;
+
+                            trigger OnDrillDown()
+                            var
+                                VATStatementName: Record 257;
+                            begin
+                                pStartingDate := 0D;
+                                pEndingDate := 0D;
+
+                                CLEAR(VATStatementName);
+                                VATStatementName.SETRANGE("Statement Template Name", pStatementTemplate);
+                                IF (PAGE.RUNMODAL(320, VATStatementName) = ACTION::LookupOK) THEN BEGIN
+                                    pStatementName := VATStatementName.Name;
+                                    IntracommVISIBLE := IsIntracommVisible();
+                                END;
+                            end;
+                        }
+                    }
+                    group(Period)
+                    {
+                        Caption = 'Period';
+                        field(StartingDate; pStartingDate)
+                        {
+                            Caption = 'Starting Date';
+                            ShowMandatory = true;
+                            ToolTip = 'Specifies the date from which the report or batch job processes information.';
+                            // --> BEFORE
+                            // trigger OnLookup(var Text: Text): Boolean
+                            // var
+                            //     AccountingPeriod: Record 50;
+                            // begin
+                            //     pEndingDate := 0D;
+                            //     CLEAR(AccountingPeriod);
+
+                            //     IF (IsAnnualPeriod()) THEN
+                            //         AccountingPeriod.SETRANGE("New Fiscal Year", TRUE);
+
+                            //     IF (PAGE.RUNMODAL(0, AccountingPeriod) = ACTION::LookupOK) THEN BEGIN
+
+                            //         pStartingDate := AccountingPeriod."Starting Date";
+                            //         IF (IsAnnualPeriod()) THEN BEGIN
+                            //             pEndingDate := AccountingPeriod.GetFiscalYearEndDate(pStartingDate);
+                            //             IF (pEndingDate = 0D) THEN
+                            //                 pEndingDate := CALCDATE('<CY>', pStartingDate)
+                            //         END ELSE
+                            //             IF (IsTrimestrialPeriod()) THEN
+                            //                 pEndingDate := CALCDATE('<CQ>', pStartingDate)
+                            //             ELSE
+                            //                 IF (IsMensualPeriod()) THEN
+                            //                     pEndingDate := CALCDATE('<CM>', pStartingDate);
+
+                            //     END;
+                            // end;
+                            // <-- AFTER
+                            trigger OnLookup(var Text: Text): Boolean
+                            var
+                                AccountingPeriod: Record 50;
+                                VATStatementName: Record "VAT Statement Name";
+                            begin
+                                pEndingDate := 0D;
+                                CLEAR(AccountingPeriod);
+                                CLEAR(VATStatementName);
+                                VATStatementName.GET(pStatementTemplate, pStatementName);
+
+                                IF (VATStatementName.Periodicity = "VAT Statement Name".Periodicity::Yearly) THEN
+                                    AccountingPeriod.SETRANGE("New Fiscal Year", TRUE);
+
+                                IF (PAGE.RUNMODAL(0, AccountingPeriod) = ACTION::LookupOK) THEN BEGIN
+
+                                    pStartingDate := AccountingPeriod."Starting Date";
+                                    IF (VATStatementName.Periodicity = "VAT Statement Name".Periodicity::Yearly) THEN BEGIN
+                                        pEndingDate := AccountingPeriod.GetFiscalYearEndDate(pStartingDate);
+                                        IF (pEndingDate = 0D) THEN
+                                            pEndingDate := CALCDATE('<CY>', pStartingDate)
+                                    END ELSE
+                                        IF (VATStatementName.Periodicity = "VAT Statement Name".Periodicity::Quaterly) THEN
+                                            pEndingDate := CALCDATE('<CQ>', pStartingDate)
+                                        ELSE
+                                            IF (VATStatementName.Periodicity = "VAT Statement Name".Periodicity::Monthly) THEN
+                                                pEndingDate := CALCDATE('<CM>', pStartingDate);
+
+                                END;
+                            end;
+                        }
+                        field(EndingDate; pEndingDate)
+                        {
+                            Caption = 'Ending Date';
+                            ShowMandatory = true;
+                            ToolTip = 'Specifies the end date for the time interval for VAT statement lines in the report.';
+                        }
+                    }
+                    group(Type)
+                    {
+                        Caption = 'Recapitulative Statements';
+                        Visible = IntracommVISIBLE;
+                        field(IntracommGoods; pIntracommGoods)
+                        {
+                            Caption = 'Intracommunity of Goods';
+                        }
+                        field(IntracommServices; pIntracommServices)
+                        {
+                            Caption = 'Intracommunity of Services';
+                        }
+                        field(EU3PartyTrade; pEU3PartyTrade)
+                        {
+                            Caption = 'EU 3-Party Trade';
+                            Importance = Additional;
+                            Visible = false;
+                        }
+                    }
+                    group(Various)
+                    {
+                        Caption = 'Various';
+                        field(Selection; Selection)
+                        {
+                            ApplicationArea = Basic, Suite;
+                            Caption = 'Include VAT Entries';
+                            Importance = Additional;
+                            OptionCaption = 'Open,Closed,Open and Closed';
+                            ToolTip = 'Specifies if you want to include open VAT entries in the report.';
+                        }
+                        field(PeriodSelection; PeriodSelection)
+                        {
+                            ApplicationArea = Basic, Suite;
+                            Caption = 'Include VAT Entries';
+                            Importance = Additional;
+                            OptionCaption = 'Before and Within Period,Within Period';
+                            ToolTip = 'Specifies if you want to include VAT entries from before the specified time period in the report.';
+                        }
+                        field(RoundToWholeNumbers; PrintInIntegers)
+                        {
+                            ApplicationArea = Basic, Suite;
+                            Caption = 'Round to Whole Numbers';
+                            Importance = Additional;
+                            ToolTip = 'Specifies if you want the amounts in the report to be rounded to whole numbers.';
+                        }
+                    }
                 }
             }
         }
@@ -162,46 +353,48 @@ report 50900 "Create eCDF Statement"
         PrintInIntegers: Boolean;
         UseAmtsInAddCurr: Boolean;
 
-    local procedure IsAnnualPeriod() lb_Return: Boolean
-    var
-        VATStatementName: Record "VAT Statement Name";
-    begin
-        CLEAR(VATStatementName);
-        VATStatementName.GET(pStatementTemplate, pStatementName);
-        IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 3) = 'CA_')
-            OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECA')) THEN
-            lb_Return := TRUE
-        ELSE
-            lb_Return := FALSE;
-    end;
+    // DEACTIVED PROCEDURES DUE TO 
 
-    local procedure IsTrimestrialPeriod() lb_Return: Boolean
-    var
-        VATStatementName: Record "VAT Statement Name";
-    begin
-        CLEAR(VATStatementName);
-        VATStatementName.GET(pStatementTemplate, pStatementName);
-        IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECT')
-            OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_LICT')
-            OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_PSIT')) THEN
-            lb_Return := TRUE
-        ELSE
-            lb_Return := FALSE;
-    end;
+    // local procedure IsAnnualPeriod() lb_Return: Boolean
+    // var
+    //     VATStatementName: Record "VAT Statement Name";
+    // begin
+    //     CLEAR(VATStatementName);
+    //     VATStatementName.GET(pStatementTemplate, pStatementName);
+    //     IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 3) = 'CA_')
+    //         OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECA')) THEN
+    //         lb_Return := TRUE
+    //     ELSE
+    //         lb_Return := FALSE;
+    // end;
 
-    local procedure IsMensualPeriod() lb_Return: Boolean
-    var
-        VATStatementName: Record "VAT Statement Name";
-    begin
-        CLEAR(VATStatementName);
-        VATStatementName.GET(pStatementTemplate, pStatementName);
-        IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECM')
-            OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_LICM')
-            OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_PSIM')) THEN
-            lb_Return := TRUE
-        ELSE
-            lb_Return := FALSE;
-    end;
+    // local procedure IsTrimestrialPeriod() lb_Return: Boolean
+    // var
+    //     VATStatementName: Record "VAT Statement Name";
+    // begin
+    //     CLEAR(VATStatementName);
+    //     VATStatementName.GET(pStatementTemplate, pStatementName);
+    //     IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECT')
+    //         OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_LICT')
+    //         OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_PSIT')) THEN
+    //         lb_Return := TRUE
+    //     ELSE
+    //         lb_Return := FALSE;
+    // end;
+
+    // local procedure IsMensualPeriod() lb_Return: Boolean
+    // var
+    //     VATStatementName: Record "VAT Statement Name";
+    // begin
+    //     CLEAR(VATStatementName);
+    //     VATStatementName.GET(pStatementTemplate, pStatementName);
+    //     IF ((COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_DECM')
+    //         OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_LICM')
+    //         OR (COPYSTR(FORMAT(VATStatementName."Statement eCDF Type"), 1, 8) = 'TVA_PSIM')) THEN
+    //         lb_Return := TRUE
+    //     ELSE
+    //         lb_Return := FALSE;
+    // end;
 
     local procedure IsIntracommVisible() lb_Return: Boolean
     var

@@ -5,7 +5,7 @@
 tableextension 50900 "Luxembourg Setup" extends "Company Information"
 #pragma warning restore DOC0101
 {
-    Caption = 'Company Information_Ext';
+    Caption = 'Company Information';
 
     fields
     {

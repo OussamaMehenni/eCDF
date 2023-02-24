@@ -1,9 +1,9 @@
 /// <summary>
 /// PageExtension VAT Statement_Ext (ID 50902) extends Record VAT Statement.
 /// </summary>
-pageextension 50902 "VAT Statement_Ext" extends "VAT Statement"
+pageextension 50902 "VAT Statement" extends "VAT Statement"
 {
-    Caption = 'VAT Statement_Ext';
+    //Caption = 'VAT Statement_Ext';
     layout
     {
         modify(Control1)

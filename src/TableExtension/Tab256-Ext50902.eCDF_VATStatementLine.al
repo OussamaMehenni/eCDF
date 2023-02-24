@@ -4,7 +4,7 @@
 /// </summary>
 tableextension 50902 "VAT Statement Line_Ext" extends "VAT Statement Line"
 {
-    Caption = 'VAT Statement Line_Ext';
+    Caption = 'VAT Statement Line';
 
     fields
     {

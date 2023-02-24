@@ -9,7 +9,7 @@
             "server": "https://ekzvmwbc02.saas.e-kenz.com",
             "serverInstance": "BC21_om",
             "authentication": "Windows",
-            "startupObjectId": 50901,
+            "startupObjectId": 470,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,
@@ -17,7 +17,7 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "port": 7049,
-            "schemaUpdateMode": "Recreate"
+            "schemaUpdateMode": "Synchronize"
         }
     ]
 }

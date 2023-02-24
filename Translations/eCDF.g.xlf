@@ -383,16 +383,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3066834683 - Control 3261716993 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the Control.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Control - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3066834683 - Control 3261716993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Control</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Control - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3066834683 - Control 659094524 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Statement Name.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -412,6 +402,16 @@
           <source>Statement Template Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control CurrentStmtTemplate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 3261716993 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Control.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Control - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 3261716993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Control</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Control - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3066834683 - Control 2145620180 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Data Type.</source>
@@ -552,6 +552,26 @@
           <source>Start Date Validity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Start Date Validity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 2480862846 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Statement Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Statement Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 2480862846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statement Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Statement Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 2710132870 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Statement Template Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Statement Template Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3066834683 - Control 2710132870 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statement Template Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Rules - Control Statement Template Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3066834683 - Control 3732224266 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Test.</source>
@@ -1128,6 +1148,116 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 952803871 - Control 952803871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create eCDF Statement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Create eCDF Statement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 3592094765 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the end date for the time interval for VAT statement lines in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control EndingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 3592094765 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ending Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control EndingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 543275552 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date from which the report or batch job processes information.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control StartingDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 543275552 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Starting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control StartingDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 1002125975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statement</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Statement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 49060574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statement Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control StatementName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 423883871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statement Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control StatementTemplate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recapitulative Statements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 3938611309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EU 3-Party Trade</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control EU3PartyTrade - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 4051792352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intracommunity of Goods</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control IntracommGoods - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 1400567030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intracommunity of Services</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control IntracommServices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 2217297831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Various</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Various - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 2447776439 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to include VAT entries from before the specified time period in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control PeriodSelection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 2447776439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include VAT Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control PeriodSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 2447776439 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Before and Within Period,Within Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control PeriodSelection - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 1039020100 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want the amounts in the report to be rounded to whole numbers.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control RoundToWholeNumbers - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 1039020100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Round to Whole Numbers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control RoundToWholeNumbers - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 870794884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to include open VAT entries in the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Selection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 870794884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Include VAT Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Selection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 952803871 - Control 870794884 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open,Closed,Open and Closed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Create eCDF Statement - Control Selection - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Report 2633382749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create XML File</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1153,11 +1283,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create XML File - Control Model - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1250956413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
-          <source>Luxembourg Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 972110707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1167,6 +1292,11 @@
           <source>Specifies the AMatrnb.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control AMatrnb - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 684048921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>AMatrnb</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control AMatrnb - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 199423 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the ARCSnbr.</source>
@@ -1178,6 +1308,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control AVATNbr - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 1423286880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>AVATNbr</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control AVATNbr - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2442254210 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Declarant</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1188,15 +1323,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DMatrnb - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2491565510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>DMatrnb</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DMatrnb - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2036952844 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the DRCSnbr.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DRCSnbr - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2036952844 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>DRCSnbr</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DRCSnbr - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 3743979019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the DVATNbr.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DVATNbr - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 3743979019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>DVATNbr</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control DVATNbr - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 1853798896 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Luxembourg</source>
@@ -1208,88 +1358,123 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Declaration Intrastat Type - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2539723070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Declaration Intrastat Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Declaration Intrastat Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2431186053 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the Diplo. Threshold Amount.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. Threshold Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2431186053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Diplo. Threshold Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. Threshold Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 1835126349 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the Diplo. VAT Bus. Posting Exo.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. VAT Bus. Posting Exo - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 1835126349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Diplo. VAT Bus. Posting Exo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. VAT Bus. Posting Exo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2708252031 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the Diplo. VAT Bus. Posting Origin.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. VAT Bus. Posting Origin - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2708252031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Diplo. VAT Bus. Posting Origin</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Diplo. VAT Bus. Posting Origin - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 27260875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the eCDF - Prefix.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - Prefix - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 27260875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>eCDF - Prefix</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - Prefix - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 1342236486 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the eCDF - XML Version.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - XML Version - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 1342236486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>eCDF - XML Version</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - XML Version - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2698460284 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the eCDF - XSD File.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - XSD File - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 2698460284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>eCDF - XSD File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control eCDF - XSD File - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 375944291 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the Luxembourg Legislation.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Luxembourg Legislation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 375944291 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>Luxembourg Legislation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control Luxembourg Legislation - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 3807028392 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the RCS Enterprise Number.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control RCS Enterprise Number - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1250956413 - Control 3807028392 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>RCS Enterprise Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control RCS Enterprise Number - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 2614298631 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Specifies the TaxationSystem.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control TaxationSystem - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2153199577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2248515987">
-          <source>VAT Entries_Ext</source>
+        <trans-unit id="PageExtension 1250956413 - Control 2614298631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
+          <source>TaxationSystem</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Entries_Ext - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Luxembourg Setup - Control TaxationSystem - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2934617102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4132487568">
-          <source>VAT Posting Setup_Ext</source>
+        <trans-unit id="PageExtension 2797067059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2797067059">
+          <source>VAT Business Posting Groups_Ext</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Posting Setup_Ext - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Business Posting Groups - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1951076352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2290637262">
-          <source>VAT Statement Names_Ext</source>
+        <trans-unit id="PageExtension 2797067059 - Control 2568339845 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2797067059">
+          <source>Specifies the VAT Partner Region</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Names_Ext - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Business Posting Groups - Control VAT Region - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1951076352 - Action 2470802439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2290637262">
+        <trans-unit id="PageExtension 2290637262 - Action 2470802439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2290637262">
           <source>Edit eCDF Rules</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Names_Ext - Action Edit eCDF Rules - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Names - Action Edit eCDF Rules - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1951076352 - Change 3956040542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2290637262">
+        <trans-unit id="PageExtension 2290637262 - Change 3956040542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2290637262">
           <source>Edit eCDF Statement</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Names_Ext - Change Edit VAT Statement - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 499069205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1639628935">
-          <source>VAT Statement Templates_Ext</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Templates_Ext - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 543951556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1770625610">
-          <source>VAT Statement_Ext</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement_Ext - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension VAT Statement Names - Change Edit VAT Statement - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1250956413 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
-          <source>Company Information_Ext</source>
+          <source>Company Information</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Luxembourg Setup - Property Caption</note>
         </trans-unit>
@@ -1388,8 +1573,18 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Luxembourg Setup - Field TaxationSystem - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 470064024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
+          <source>VAT Business Posting Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Business Posting Group_Ext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 470064024 - Field 2568339845 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2430374758">
+          <source>VAT Region</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Business Posting Group_Ext - Field VAT Region - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2735374915 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2941967353">
-          <source>VAT Entry_Ext</source>
+          <source>VAT Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Entry_Ext - Property Caption</note>
         </trans-unit>
@@ -1399,27 +1594,27 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Entry_Ext - Field EU Goods - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2735374915 - Field 2146541700 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2941967353">
-          <source>Investement,Good,Service</source>
+          <source>,Investement,Good,Service</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Entry_Ext - Field EU Goods - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2934617102 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
-          <source>VAT Posting Setup_Ext</source>
+        <trans-unit id="TableExtension 4132487568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
+          <source>VAT Posting Setup</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup_Ext - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2934617102 - Field 2146541700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
+        <trans-unit id="TableExtension 4132487568 - Field 2146541700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
           <source>EU Goods</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup_Ext - Field EU Goods - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup - Field EU Goods - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 2934617102 - Field 2146541700 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
-          <source>Investement,Good,Service</source>
+        <trans-unit id="TableExtension 4132487568 - Field 2146541700 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4132487568">
+          <source>,Investement,Good,Service</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup_Ext - Field EU Goods - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Posting Setup - Field EU Goods - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3734077074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1273487196">
-          <source>VAT Statement Line_Ext</source>
+          <source>VAT Statement Line</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Statement Line_Ext - Property Caption</note>
         </trans-unit>
@@ -1434,9 +1629,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Statement Line_Ext - Field VAT Lux. Prod. Posting Group - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3070832489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3421076227">
-          <source>VAT Statement Name_Ext</source>
+          <source>VAT Statement Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Statement Name_Ext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3070832489 - Field 995423621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3421076227">
+          <source>Periodicity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Statement Name_Ext - Field Periodicity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3070832489 - Field 995423621 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3421076227">
+          <source>Monthly,Quaterly,Yearly</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension VAT Statement Name_Ext - Field Periodicity - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3070832489 - Field 3612616203 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3421076227">
           <source>Statement eCDF Type</source>
