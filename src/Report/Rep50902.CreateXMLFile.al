@@ -6,6 +6,7 @@ report 50902 "Create XML File"
     ApplicationArea = All;
     Caption = 'Create XML File';
     UsageCategory = ReportsAndAnalysis;
+    ProcessingOnly = true;
     dataset
     {
         dataitem(eCDFData; "eCDF Data")

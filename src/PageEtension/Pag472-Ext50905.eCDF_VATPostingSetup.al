@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50905 "VAT Posting Setup" extends "VAT Posting Setup"
 {
-    //Caption = 'VAT Posting Setup_Ext';
+    Caption = 'VAT Posting Setup';
 
     layout
     {

@@ -5,7 +5,8 @@
 pageextension 50900 "Luxembourg Setup" extends "Company Information"
 #pragma warning restore DOC0101
 {
-    //Caption = 'Company Information_Ext';
+    Caption = 'Company Information';
+
     layout
     {
         addafter("User Experience")
@@ -32,6 +33,7 @@ pageextension 50900 "Luxembourg Setup" extends "Company Information"
                     ApplicationArea = All;
                     Caption = 'eCDF - Prefix';
                     Tooltip = 'Specifies the eCDF - Prefix.';
+                    // Width = 6; // --> Not working in this context : Page with Type : Card
                 }
 
                 field("Diplo. VAT Bus. Posting Origin"; Rec."Diplo. VAT Bus. Posting Origin")

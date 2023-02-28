@@ -928,16 +928,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control XML Tag - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 443419355 - Control 4189214885 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the Status Header.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control Status Header - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 443419355 - Control 4189214885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>General Status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control Status Header - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 443419355 - Control 3518960366 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the Ending Date.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -998,15 +988,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control CurrentStmtVersion - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 443419355 - Control 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Notes</source>
+        <trans-unit id="Page 443419355 - Control 4189214885 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the Status Header.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control Notes - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control Status Header - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 443419355 - Control 3752523554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RecordLinks</source>
+        <trans-unit id="Page 443419355 - Control 4189214885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control RecordLinks - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Control Status Header - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 443419355 - Action 3227595700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Action Check Vat Statement - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 443419355 - Action 2633382749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create XML File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Action Create XML File - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 443419355 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page eCDF Statement - Action Print - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 323112901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>eCDF Data List</source>
@@ -1283,6 +1288,121 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report Create XML File - Control Model - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Report 417057094 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print VAT Declaration</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Print VAT Declaration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Declaration Corrections</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 652464844" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please complete the following field: '%1'</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType Text50000</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 14768227" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please complete one of the following fields: '%1' or '%2'</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType Text50001</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 1927858078" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please check the following field(s): '%1'</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType Text50002</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 519682241" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The period must be lower than starting date of declaration. </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextComparePeriod</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 2136557173" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correction Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextCorrAmout</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 3404870351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextCountry</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 3543123302" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intra. Goods</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextDeclarationTypeINTRAG</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 2605548114" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intra. Services</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextDeclarationTypeINTRAS</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 985903687" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextMonth</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 3091958195" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quarter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextQuarter</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 1213481785" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextVATNO</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 1815567203" size-unit="char" translate="yes" xml:space="preserve">
+          <source>'%1' not found in database!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextVATNOCheck</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - NamedType 3095982214" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - NamedType TextYear</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 3083748138 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Correction by a +/- amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Correction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 2687783255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Country code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 1005905148 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Declaration Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Declaration Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month (1-12)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Month - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 316457880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quarter (1-4)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Quarter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 3418013021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Triangular operations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Triangular operations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 258288245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT Registration No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control VATRegistrationNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 4274836362 - Control 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report VAT Declaration Corrections - Control Year - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1250956413 - Control 972110707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3469146285">
           <source>Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1537,6 +1657,11 @@
           <source>eCDF - Prefix</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Luxembourg Setup - Field eCDF - Prefix - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1250956413 - Field 27260875 - Method 2126772001 - NamedType 3262980987" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 1250956413">
+          <source>The field must contain excatly %1 characters</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Luxembourg Setup - Field eCDF - Prefix - Method OnValidate - NamedType Text50900</note>
         </trans-unit>
         <trans-unit id="TableExtension 1250956413 - Field 1342236486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3469146285">
           <source>eCDF - XML Version</source>

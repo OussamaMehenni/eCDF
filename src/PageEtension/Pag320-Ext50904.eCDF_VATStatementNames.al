@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50904 "VAT Statement Names" extends "VAT Statement Names"
 {
-    //Caption = 'VAT Statement Names_Ext';
+    Caption = 'VAT Statement Names';
 
     layout
     {

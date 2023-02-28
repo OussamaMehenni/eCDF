@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50906 "VAT Business Posting Groups" extends "VAT Business Posting Groups"
 {
-    Caption = 'VAT Business Posting Groups_Ext';
+    Caption = 'VAT Business Posting Groups';
     layout
     {
         addafter(Description)

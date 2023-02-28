@@ -9,7 +9,7 @@
             "server": "https://ekzvmwbc02.saas.e-kenz.com",
             "serverInstance": "BC21_om",
             "authentication": "Windows",
-            "startupObjectId": 470,
+            "startupObjectId": 1,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,

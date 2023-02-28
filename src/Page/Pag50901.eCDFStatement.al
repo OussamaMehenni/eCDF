@@ -6,8 +6,10 @@ page 50901 "eCDF Statement"
     Caption = 'eCDF Statement';
     PageType = WorkSheet;
     SourceTable = "eCDF Data";
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
+    InsertAllowed = false;
+    DeleteAllowed = true;
+    AutoSplitKey = true;
+    MultipleNewLines = true;
 
     layout
     {
@@ -89,10 +91,6 @@ page 50901 "eCDF Statement"
                     end;
                 }
 
-            }
-
-            group(Data)
-            {
                 field("Status Header"; Rec."Status Header")
                 {
                     ApplicationArea = All;
@@ -100,6 +98,7 @@ page 50901 "eCDF Statement"
                     Tooltip = 'Specifies the Status Header.';
                     Editable = false;
                 }
+
             }
 
             Repeater(Control)
@@ -460,17 +459,91 @@ page 50901 "eCDF Statement"
                 }
             }
         }
+    }
 
-        area(FactBoxes)
+    actions
+    {
+        area(Processing)
         {
-            systempart(RecordLinks; Links)
+            action("Check Vat Statement")
             {
-                Caption = 'RecordLinks';
+                Caption = 'Check';
+                Image = CheckList;
+                //Visible = IsButtonCheckVisible;
+
+                trigger OnAction()
+                var
+                    lLuxembourgVATData: Record "eCDF Data";
+                begin
+
+                    lLuxembourgVATData.SETRANGE("Statement Template Name", CurrentStmtTemplateName);
+                    lLuxembourgVATData.SETRANGE("Statement Name", CurrentStmtName);
+                    lLuxembourgVATData.SETRANGE("Starting Date", CurrentStartingDate);
+                    lLuxembourgVATData.SETRANGE("Ending Date", CurrentEndingDate);
+                    lLuxembourgVATData.SETRANGE(Version, CurrentStmtVersion);
+                    lLuxembourgVATData.SETFILTER(Status, '<%1', lLuxembourgVATData.Status::OK);
+                    //lLuxembourgVATData.SETRANGE(Declaration_Type, lLuxembourgVATData.Declaration_Type::VAT);
+                    IF lLuxembourgVATData.FINDFIRST THEN BEGIN
+                        lLuxembourgVATData.SETRANGE(Status);
+                        REPORT.RUN(50901, FALSE, FALSE, lLuxembourgVATData);
+                    END ELSE BEGIN
+                        lLuxembourgVATData.SETRANGE("Declaration Type");
+                        IF lLuxembourgVATData.FINDSET THEN
+                            REPEAT
+                                lLuxembourgVATData.VALIDATE(Status, lLuxembourgVATData.Status::OK);
+                                lLuxembourgVATData.MODIFY(TRUE);
+                            UNTIL lLuxembourgVATData.NEXT = 0;
+                    END;
+
+                end;
             }
 
-            systempart(Notes; Notes)
+            action("Create XML File")
             {
-                Caption = 'Notes';
+                Caption = 'Create XML File';
+                Ellipsis = true;
+                Image = ExportElectronicDocument;
+
+                trigger OnAction()
+                var
+                    lLuxembourgVATData: Record "eCDF Data";
+                begin
+                    lLuxembourgVATData.RESET;
+                    lLuxembourgVATData.SETRANGE("Statement Template Name", CurrentStmtTemplateName);
+                    lLuxembourgVATData.SETRANGE("Statement Name", CurrentStmtName);
+                    lLuxembourgVATData.SETRANGE("Starting Date", CurrentStartingDate);
+                    lLuxembourgVATData.SETRANGE("Ending Date", CurrentEndingDate);
+                    lLuxembourgVATData.SETRANGE(Version, CurrentStmtVersion);
+                    REPORT.RUNMODAL(50902, TRUE, FALSE, lLuxembourgVATData);
+                end;
+            }
+        }
+        area(Reporting)
+        {
+            action(Print)
+            {
+                Caption = 'Print';
+                Image = Print;
+
+                trigger OnAction()
+                var
+                    lLuxembourgVATData: Record "eCDF Data";
+                    ReportLayoutSelection: Record "Report Layout Selection";
+
+                begin
+                    lLuxembourgVATData.RESET;
+                    lLuxembourgVATData.SETRANGE("Statement Template Name", CurrentStmtTemplateName);
+                    lLuxembourgVATData.SETRANGE("Statement Name", CurrentStmtName);
+                    lLuxembourgVATData.SETRANGE("Starting Date", CurrentStartingDate);
+                    lLuxembourgVATData.SETRANGE("Ending Date", CurrentEndingDate);
+                    lLuxembourgVATData.SETRANGE(Version, CurrentStmtVersion);
+                    IF lLuxembourgVATData.FINDFIRST THEN BEGIN
+                        ReportLayoutSelection.SetTempLayoutSelected(lLuxembourgVATData."Statement Name");
+                        REPORT.RUN(50903, TRUE, FALSE, lLuxembourgVATData);
+                        ReportLayoutSelection.SetTempLayoutSelected('0');
+                    END;
+
+                end;
             }
         }
     }
@@ -498,7 +571,8 @@ page 50901 "eCDF Statement"
         CurrentStmtName := Rec.GETFILTER("Statement Name");
         EVALUATE(CurrentStartingDate, Rec.GETFILTER("Starting Date"));
         EVALUATE(CurrentEndingDate, Rec.GETFILTER("Ending Date"));
-        EVALUATE(CurrentStmtVersion, Rec.GETFILTER(Version));
+        CurrentStmtVersion := Rec.Version;
+        //EVALUATE(CurrentStmtVersion, Rec.GETFILTER(Version));
         //Setting Header >>
         CurrentDeclarationType := CurrentDeclarationType::VAT;
         Rec.SETRANGE("Declaration Type", CurrentDeclarationType);

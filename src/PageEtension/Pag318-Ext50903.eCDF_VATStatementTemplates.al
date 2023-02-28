@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50903 "VAT Statement Templates" extends "VAT Statement Templates"
 {
-    //Caption = 'VAT Statement Templates_Ext';
+    Caption = 'VAT Statement Templates';
 
     actions
     {

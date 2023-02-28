@@ -3,8 +3,8 @@
 /// </summary>
 report 50900 "Create eCDF Statement"
 {
-    ApplicationArea = All;
     Caption = 'eCDF Subscribers';
+    ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     ProcessingOnly = true;
     dataset

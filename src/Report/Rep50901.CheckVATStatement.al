@@ -4,6 +4,7 @@
 report 50901 "Check VAT Statement"
 {
     ApplicationArea = All;
+    ProcessingOnly = true;
     Caption = 'CheckVAT Statement';
     UsageCategory = ReportsAndAnalysis;
     dataset

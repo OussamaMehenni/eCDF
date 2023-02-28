@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50902 "VAT Statement" extends "VAT Statement"
 {
-    //Caption = 'VAT Statement_Ext';
+    Caption = 'VAT Statement';
     layout
     {
         modify(Control1)

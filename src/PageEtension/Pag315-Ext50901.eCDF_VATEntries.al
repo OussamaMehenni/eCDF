@@ -3,7 +3,7 @@
 /// </summary>
 pageextension 50901 "VAT Entries" extends "VAT Entries"
 {
-    //Caption = 'VAT Entries_Ext';
+    Caption = 'VAT Entries';
     layout
     {
         addafter("EU Service")
