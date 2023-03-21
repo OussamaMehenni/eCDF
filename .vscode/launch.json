@@ -9,8 +9,10 @@
             "server": "https://ekzvmwbc02.saas.e-kenz.com",
             "serverInstance": "BC21_om",
             "authentication": "Windows",
-            "startupObjectId": 1,
-            "startupObjectType": "Page",
+
+            "startupObjectType": "Report",
+            "startupObjectId": 50903,
+            
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,

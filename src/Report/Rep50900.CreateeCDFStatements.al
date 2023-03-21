@@ -1,9 +1,9 @@
 /// <summary>
-/// Report eCDF Subscribers (ID 50900).
+/// Report Create eCDF Statement (ID 50900).
 /// </summary>
 report 50900 "Create eCDF Statement"
 {
-    Caption = 'eCDF Subscribers';
+    Caption = 'Create eCDF Statement';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     ProcessingOnly = true;
@@ -212,6 +212,7 @@ report 50900 "Create eCDF Statement"
                             Caption = 'Starting Date';
                             ShowMandatory = true;
                             ToolTip = 'Specifies the date from which the report or batch job processes information.';
+
                             // --> BEFORE
                             // trigger OnLookup(var Text: Text): Boolean
                             // var
@@ -240,6 +241,7 @@ report 50900 "Create eCDF Statement"
                             //     END;
                             // end;
                             // <-- AFTER
+
                             trigger OnLookup(var Text: Text): Boolean
                             var
                                 AccountingPeriod: Record 50;

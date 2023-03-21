@@ -4,7 +4,7 @@
 page 50900 "eCDF Rules"
 {
     Caption = 'eCDF Rules';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "eCDF Rules";
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -37,7 +37,7 @@ page 50900 "eCDF Rules"
                 field("Statement Template Name"; Rec."Statement Template Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'Statement Template Name';
+                    //Caption = 'Statement Template Name';
                     Tooltip = 'Specifies the Statement Template Name.';
                     //Editable = false;
                 }
@@ -45,7 +45,7 @@ page 50900 "eCDF Rules"
                 field("Statement Name"; Rec."Statement Name")
                 {
                     ApplicationArea = All;
-                    Caption = 'Statement Name';
+                    //Caption = 'Statement Name';
                     Tooltip = 'Specifies the Statement Name.';
                     //Editable = false;
                 }
@@ -53,112 +53,112 @@ page 50900 "eCDF Rules"
                 field("Row No."; Rec."Row No.")
                 {
                     ApplicationArea = All;
-                    Caption = 'Row No.';
+                    //Caption = 'Row No.';
                     Tooltip = 'Specifies the Row No..';
                 }
 
                 field("Rule Number"; Rec."Rule Number")
                 {
                     ApplicationArea = All;
-                    Caption = 'Rule Number';
+                    //Caption = 'Rule Number';
                     Tooltip = 'Specifies the Rule Number.';
                 }
 
                 field("Description"; Rec."Description")
                 {
                     ApplicationArea = All;
-                    Caption = 'Description';
+                    //Caption = 'Description';
                     Tooltip = 'Specifies the Description.';
                 }
 
                 field("Data Type"; Rec."Data Type")
                 {
                     ApplicationArea = All;
-                    Caption = 'Data Type';
+                    //Caption = 'Data Type';
                     Tooltip = 'Specifies the Data Type.';
                 }
 
                 field("Rule Type"; Rec."Rule Type")
                 {
                     ApplicationArea = All;
-                    Caption = 'Rule Type';
+                    //Caption = 'Rule Type';
                     Tooltip = 'Specifies the Rule Type.';
                 }
 
                 field("Control"; Rec."Control")
                 {
                     ApplicationArea = All;
-                    Caption = 'Control';
+                    //Caption = 'Control';
                     Tooltip = 'Specifies the Control.';
                 }
 
                 field("Min. Value"; Rec."Min. Value")
                 {
                     ApplicationArea = All;
-                    Caption = 'Min. Value';
+                    //Caption = 'Min. Value';
                     Tooltip = 'Specifies the Min. Value.';
                 }
 
                 field("Max. Value"; Rec."Max. Value")
                 {
                     ApplicationArea = All;
-                    Caption = 'Max. Value';
+                    //Caption = 'Max. Value';
                     Tooltip = 'Specifies the Max. Value.';
                 }
 
                 field("Day1"; Rec."Day1")
                 {
                     ApplicationArea = All;
-                    Caption = 'Day1';
+                    //Caption = 'Day1';
                     Tooltip = 'Specifies the Day1.';
                 }
 
                 field("Month1"; Rec."Month1")
                 {
                     ApplicationArea = All;
-                    Caption = 'Month1';
+                    //Caption = 'Month1';
                     Tooltip = 'Specifies the Month1.';
                 }
 
                 field("Sign"; Rec."Sign")
                 {
                     ApplicationArea = All;
-                    Caption = 'Sign';
+                    //Caption = 'Sign';
                     Tooltip = 'Specifies the Sign.';
                 }
 
                 field("Day2"; Rec."Day2")
                 {
                     ApplicationArea = All;
-                    Caption = 'Day2';
+                    //Caption = 'Day2';
                     Tooltip = 'Specifies the Day2.';
                 }
 
                 field("Month2"; Rec."Month2")
                 {
                     ApplicationArea = All;
-                    Caption = 'Month2';
+                    //Caption = 'Month2';
                     Tooltip = 'Specifies the Month2.';
                 }
 
                 field("Start Date Validity"; Rec."Start Date Validity")
                 {
                     ApplicationArea = All;
-                    Caption = 'Start Date Validity';
+                    //Caption = 'Start Date Validity';
                     Tooltip = 'Specifies the Start Date Validity.';
                 }
 
                 field("End Date Validity"; Rec."End Date Validity")
                 {
                     ApplicationArea = All;
-                    Caption = 'End Date Validity';
+                    //Caption = 'End Date Validity';
                     Tooltip = 'Specifies the End Date Validity.';
                 }
 
                 field("Test"; Rec."Test")
                 {
                     ApplicationArea = All;
-                    Caption = 'Test';
+                    //Caption = 'Test';
                     Tooltip = 'Specifies the Test.';
                 }
 
@@ -173,12 +173,11 @@ page 50900 "eCDF Rules"
     }
 
     trigger OnOpenPage()
-
+    var
     begin
 
         CurrentStmtTemplate := Rec.GetFilter("Statement Template Name");
         CurrentStmtName := Rec.GetFilter("Statement Name");
-
     end;
 
     var

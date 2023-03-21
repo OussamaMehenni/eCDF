@@ -57,11 +57,11 @@ tableextension 50900 "Luxembourg Setup" extends "Company Information"
             trigger OnValidate()
             var
                 PrefixLen: Integer;
-                Text50900: Label 'The field must contain excatly %1 characters';
+                Text50900: Label 'must contain excatly %1 characters';
             begin
                 PrefixLen := 6;
                 if (StrLen("eCDF - Prefix") <> PrefixLen) then
-                    Error(Text50900, PrefixLen);
+                    FieldError("eCDF - Prefix", StrSubstNo(Text50900, PrefixLen));
             end;
         }
         field(50909; "Diplo. VAT Bus. Posting Origin"; Code[20])
